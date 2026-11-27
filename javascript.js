@@ -91,7 +91,7 @@ function equal () {
     });
 };
 
-const bclear = document.querySelector("#clear")
+const bclear = document.querySelector("#clear");
 
 function clear () {
     bclear.addEventListener("click", function (e) {
@@ -102,7 +102,7 @@ function clear () {
     })
 }
 
-const bdot = document.querySelector("#dot")
+const bdot = document.querySelector("#dot");
 
 function decimal () {
     bdot.addEventListener("click", function (e) {
@@ -122,8 +122,29 @@ function decimal () {
     })
 }
 
+const bbackspace = document.querySelector("#backspace");
+
+function backspace () {
+    bbackspace.addEventListener("click", function (e) {
+        p.textContent = p.textContent.slice(0, -1);
+        if (number1 === "" && number2 === "" && operator === "") {
+            // Do nothing
+        } else if (number1 !== "" && operator === "") {
+            number1 = String(number1).slice(0,-1);
+            console.log("number1: " + number1);
+        } else if (operator !== "" && number2 === "") {
+            operator = operator.slice(0, -1);
+            console.log("operator: " + operator);
+        } else if (number2 !== "") {
+            number2 = String(number2).slice(0, -1);
+            console.log("number2: " + number2)
+        }
+    })
+}
+
 updateNumbers();
 updateOperator();
 equal();
 clear();
 decimal();
+backspace();
